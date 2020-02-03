@@ -35,48 +35,63 @@ class Partie:
         while not self.is_ended:
             x=input("Selectionner la colonne:")
             if(not x == ""):
-                current_y=self.m-1
-                while(self.grille[current_y][int(x)-1]==1 or self.grille[current_y][int(x)-1]==2):
-                    current_y-=1
-                if (current_y < 1):
-                    print("You can't place anymore here")
-                else:
-                    if(not current_player):
-                        self.grille[current_y][int(x)-1]=1
-                        print(current_y)
-                        self.afficher_grille()
-                        if (not (current_y-1) == self.m):
-                            print("le x-1 n'est pas egal a 0")
-                            current_align_count_player1 = 1
-
-                            #vérification si le pion sur la ligne horizontale juste avant est un pion du joueur courant (player 1)
-                            for i in range(0, self.m - 1):
-                                # On verifie tous les anciens pions posés sur la ligne horizontale (de la droite vers la gauche)
-                                if (i > 0):
-                                    if (self.grille[current_y][i] == 1 and self.grille[current_y][i - 1] == 1):
-                                        current_align_count_player1 += 1
-                            print("current count for player 1 =" + str(current_align_count_player1))
-                            if (current_align_count_player1 >= self.p):
-                                print("player 1 won the game!")
-                                self.is_ended = True
-                        current_player=not current_player
+                if(not int(x)>self.m):
+                    current_y=self.m-1
+                    #On fait tomber le pion au dessus du précédent si jamais un pion est déjà posé sur cette colonne
+                    while(self.grille[current_y][int(x)-1]==1 or self.grille[current_y][int(x)-1]==2):
+                        current_y-=1
+                    if (current_y < 1):
+                        print("You can't place anymore here")
                     else:
-                        self.grille[current_y][int(x) - 1] = 2
-                        print(current_y)
-                        self.afficher_grille()
-                        if(not current_y-1 ==self.m):
-                            print("le x-1 n'est pas egal a 0")
-                            current_align_count_player2 = 1
-                            #vérification si le pion sur la ligne horizontale juste avant est un pion du joueur courant (player 2)
-                            for i in range(0,self.m-1):
-                                #On verifie tous les anciens pions posés sur la ligne horizontale (de la droite vers la gauche)
-                                if(i>0):
-                                    if(self.grille[current_y][i] == 2 and self.grille[current_y][i-1] == 2):
-                                        current_align_count_player2+=1
-                            print("current count for player 2 ="+str(current_align_count_player2))
-                            if(current_align_count_player2 >= self.p):
-                                print("player 2 won the game!")
-                                self.is_ended = True
-                        current_player=not current_player
+                        if(not current_player):
+                            self.grille[current_y][int(x)-1]=1
+                            self.afficher_grille()
+                            if (not (current_y-1) == self.m):
+                                current_align_count_player1 = 1
+                                # vérification des pions successifs sur la ligne horizontale pour le player 2
+                                for i in range(0, self.m - 1):
+                                    if (i > 0):
+                                        if (self.grille[current_y][i] == 1 and self.grille[current_y][i - 1] == 1):
+                                            # Si deux pions se suivent, on incrémente le compteur
+                                            current_align_count_player1 += 1
+                                if (current_align_count_player1 >= self.p):
+                                    print("player 1 won the game!")
+                                    self.is_ended = True
+                                current_align_count_player1 = 1
+                                # vérification des pions successifs sur la ligne verticale pour le player 2
+                                for i in range(0, self.n):
+                                    if (i > 0):
+                                        if (self.grille[i][int(x) - 1] == 1 and self.grille[i - 1][int(x) - 1] == 1):
+                                            # Si deux pions se suivent, on incrémente le compteur
+                                            current_align_count_player1 += 1
+                                if (current_align_count_player1 >= self.p):
+                                    print("player 1 won the game!")
+                                    self.is_ended = True
+                            current_player = not current_player
+                        else:
+                            self.grille[current_y][int(x) - 1] = 2
+                            self.afficher_grille()
+                            if(not current_y-1 ==self.m):
+                                current_align_count_player2 = 1
+                                # vérification des pions successifs sur la ligne horizontale pour le player 2
+                                for i in range(0,self.m-1):
+                                    if(i>0):
+                                        if(self.grille[current_y][i] == 2 and self.grille[current_y][i-1] == 2):
+                                            #Si deux pions se suivent, on incrémente le compteur
+                                            current_align_count_player2+=1
+                                if(current_align_count_player2 >= self.p):
+                                    print("player 2 won the game!")
+                                    self.is_ended = True
+                                current_align_count_player2 = 1
+                                # vérification des pions successifs sur la ligne verticale pour le player 2
+                                for i in range(0,self.n):
+                                    if (i > 0):
+                                        if (self.grille[i][int(x)-1] == 2 and self.grille[i-1][int(x)-1] == 2):
+                                            #Si deux pions se suivent, on incrémente le compteur
+                                            current_align_count_player2 += 1
+                                if (current_align_count_player2 >= self.p):
+                                    print("player 2 won the game!")
+                                    self.is_ended = True
+                            current_player=not current_player
         else:
             print("you have to enter a number")
