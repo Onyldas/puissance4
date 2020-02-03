@@ -8,6 +8,6 @@ def index():
     return render_template('index.html',title='Puissance 4')
 
 if __name__ == "__main__":
-    app.run()
+   # app.run()
     game = Partie(15, 14, 8)
-    game.afficher_grille()
+    game.begin_game()
