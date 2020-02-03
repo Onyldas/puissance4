@@ -1,9 +1,6 @@
 from utilitaires import CustomLogging
-import os
 
-clear = lambda: os.system('clear')  # on Linux System
-
-import numpy as np
+import random
 
 logging = CustomLogging()
 
@@ -30,8 +27,10 @@ class Partie:
             print(self.grille[i])
 
     def combo_for_user(self, current_y, player, x):
+        #Si on est player 1, on met un 1 dans le tableau ou le pion tombera
         if player == 1:
             self.grille[current_y][int(x) - 1] = 1
+        # Si on est player 2, on met un 2 dans le tableau ou le pion tombera
         else:
             self.grille[current_y][int(x) - 1] = 2
         self.afficher_grille()
@@ -59,24 +58,62 @@ class Partie:
         return current_align_count
 
     def begin_game(self):
-        current_player = False
-        while not self.is_ended:
-            choosen_column = input("Selectionner la colonne:")
-            if (not choosen_column == "") and (not int(choosen_column) > self.m):
-                if not int(choosen_column) > self.m:
-                    current_y = self.m - 1
-                    # On fait tomber le pion au dessus du précédent si jamais un pion est déjà posé sur cette colonne
-                    while self.grille[current_y][int(choosen_column) - 1] == 1 or self.grille[current_y][int(choosen_column) - 1] == 2:
-                        current_y -= 1
-                    if current_y < 1:
-                        print("You can't place anymore here")
-                    else:
-                        if not current_player:
-                            self.combo_for_user(current_y, 1, choosen_column)
-                            current_player = not current_player
-                        else:
-                            self.combo_for_user(current_y, 2, choosen_column)
-                            current_player = not current_player
+        selected_game=input("Select game : 1- Joueur vs Joueur || 2- Joeur vs Dumb IA || 3 - incoming...")
+        if int(selected_game) == 1:
+            current_player = False
+            while not self.is_ended:
 
-        else:
-            print("you have to enter a number")
+                choosen_column = input("Selectionner la colonne:")
+                if (not choosen_column == "") and (not int(choosen_column) > self.m):
+                    if not int(choosen_column) > self.m:
+                        current_y = self.m - 1
+                        # On fait tomber le pion au dessus du précédent si jamais un pion est déjà posé sur cette colonne
+                        while self.grille[current_y][int(choosen_column) - 1] == 1 or self.grille[current_y][int(choosen_column) - 1] == 2:
+                            current_y -= 1
+                        if current_y < 1:
+                            print("You can't place anymore here")
+                        else:
+                            if not current_player:
+                                self.combo_for_user(current_y, 1, choosen_column)
+                                current_player = not current_player
+                            else:
+                                self.combo_for_user(current_y, 2, choosen_column)
+                                current_player = not current_player
+            else:
+                print("you have to enter a number")
+        if int(selected_game) == 2:
+            current_player = False
+            while not self.is_ended:
+                if not current_player:
+                    choosen_column = input("Selectionner la colonne:")
+                    if (not choosen_column == "") and (not int(choosen_column) > self.m):
+                        if not int(choosen_column) > self.m:
+                            current_y = self.m - 1
+                            # On fait tomber le pion au dessus du précédent si jamais un pion est déjà posé sur cette colonne
+                            while self.grille[current_y][int(choosen_column) - 1] == 1 or self.grille[current_y][
+                                int(choosen_column) - 1] == 2:
+                                current_y -= 1
+                            if current_y < 1:
+                                print("You can't place anymore here")
+                            else:
+                                self.combo_for_user(current_y, 1, choosen_column)
+                                current_player = not current_player
+                            cls = lambda: print('\n' * 100)
+                            cls()
+                else:
+                    choosen_column = random.randint(1,self.n)
+                    if (not choosen_column == "") and (not int(choosen_column) > self.m):
+                        if not int(choosen_column) > self.m:
+                            current_y = self.m - 1
+                            # On fait tomber le pion au dessus du précédent si jamais un pion est déjà posé sur cette colonne
+                            while self.grille[current_y][int(choosen_column) - 1] == 1 or self.grille[current_y][
+                                int(choosen_column) - 1] == 2:
+                                current_y -= 1
+                            if current_y < 1:
+                                print("You can't place anymore here")
+                            else:
+                                print("Dumb ia is playing")
+                                self.combo_for_user(current_y, 2, choosen_column)
+                                current_player = not current_player
+            else:
+                print("you have to enter a number")
