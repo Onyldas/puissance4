@@ -1,2 +1,5 @@
 2019-12-17 15:44:07.087837 : Nouvelle partie : 7 de longueur et 6 de largeur.
+Les joueurs doivent aligner 4 jetons.2020-02-03 09:24:33.430019 : Nouvelle partie : 7 de longueur et 6 de largeur.
+Les joueurs doivent aligner 4 jetons.2020-02-03 09:28:09.911662 : Nouvelle partie : 7 de longueur et 6 de largeur.
+Les joueurs doivent aligner 4 jetons.2020-02-03 09:31:49.128223 : Nouvelle partie : 7 de longueur et 6 de largeur.
 Les joueurs doivent aligner 4 jetons.

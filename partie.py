@@ -6,7 +6,7 @@ logging = CustomLogging()
 
 class Partie:
     grille = []
-
+  #  is_ended=false
     def __init__(self, m, n, p):
         self.m = 7
         self.n = 6
@@ -22,3 +22,7 @@ class Partie:
     def afficher_grille(self):
         for i in range(self.n):
             print(self.grille[i])
+
+
+  #  def begin_game(self):
+ #       while is_ended
