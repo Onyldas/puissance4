@@ -261,4 +261,7 @@ Les joueurs doivent aligner 4 jetons.2020-02-11 16:44:09.659891 : Nouvelle parti
 Les joueurs doivent aligner 4 jetons.2020-02-11 16:44:34.108810 : Nouvelle partie : 6 de longueur et 7 de largeur.
 Les joueurs doivent aligner 4 jetons.2020-02-11 16:45:10.597866 : Nouvelle partie : 6 de longueur et 7 de largeur.
 Les joueurs doivent aligner 4 jetons.2020-02-11 16:45:18.055779 : Nouvelle partie : 6 de longueur et 7 de largeur.
+Les joueurs doivent aligner 4 jetons.2020-02-13 22:47:33.487895 : Nouvelle partie : 6 de longueur et 7 de largeur.
+Les joueurs doivent aligner 4 jetons.2020-02-24 09:19:44.553455 : Nouvelle partie : 6 de longueur et 7 de largeur.
+Les joueurs doivent aligner 4 jetons.2020-02-24 10:02:24.069358 : Nouvelle partie : 6 de longueur et 7 de largeur.
 Les joueurs doivent aligner 4 jetons.
